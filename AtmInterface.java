@@ -2,6 +2,41 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+class AtmUser{
+
+    private double balance;
+    private String name;
+    
+    public double getBalance() {
+        return balance;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public boolean withdrawal(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public void deposit(double amount) {
+        balance += amount;
+    }
+    }
+
 public class Atms extends JFrame implements ActionListener {
     private JLabel balanceLabel;
     private JTextField withdrawField;
@@ -11,7 +46,7 @@ public class Atms extends JFrame implements ActionListener {
     public Atms() {
         super("ATM Machine");
         atmUser = new AtmUser();
-        atmUser.setBalance(77777777);
+        atmUser.setBalance(500000);
 
         // Create components
         balanceLabel = new JLabel("Your balance: $" + atmUser.getBalance());
